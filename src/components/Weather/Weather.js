@@ -6,16 +6,27 @@ import Inputs from "./Inputs";
 import TimeAndLocation from "./TimeAndLocation";
 import TempAndDetails from "./TempAndDetails";
 import Forecast from "./Forecast";
-import getWeatherData from "../../services/weatherService";
+import getFormattedWeatherData from "../../services/weatherService";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function Weather() {
 
-  const fetchWeather = async () => {
-    const data = await getWeatherData("weather", { q: "london"});
-    console.log(data);
-  };
+  const [query, setQuery] = useState ({ q: "berlin" });
+  const [units, setUnits] = useState("imperial");
+  const [weather, setWeather] = useState(null);
 
-  fetchWeather();
+  useEffect(() => {
+    const fetchWeather = async () => {
+      await getFormattedWeatherData({ ...query, units}).then(
+        (data) => {
+          setWeather(data);
+        }
+      )
+    };
+
+    fetchWeather();
+  }, [query, units]);
 
   return (
     <div className="mx-auto max-w-screen-md 
@@ -24,10 +35,15 @@ function Weather() {
       <TopButtons />
       <Inputs />
 
-      <TimeAndLocation />
-      <TempAndDetails />
-      <Forecast title="hourly forecast"/>
-      <Forecast title="daily forecast" />
+      {weather && (
+        <div>
+          <TimeAndLocation weather={weather}/>
+          <TempAndDetails weather={weather}/>
+          <Forecast title="hourly forecast"/>
+          <Forecast title="daily forecast" />
+        </div>
+      )}
+
     </div>
   );
 }

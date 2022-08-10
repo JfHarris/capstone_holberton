@@ -1,33 +1,41 @@
 import React from 'react';
 import { UilArrowDown, UilArrowUp,UilTemperature, UilWind, UilTear,
   UilSun, UilSunset, } from "@iconscout/react-unicons";
+import iconURLFromCode from "../../services/weatherService";
+import formatToLocalTime from "../../services/weatherService";
 
 
-function TempAndDetails() {
+function TempAndDetails({weather: {
+  details, icon, temp, temp_min, temp_max, sunrise, sunset,
+  speed, humidity, feels_like, timezone
+}}) {
   return (
     <div>
       <div className="flex items-center justify-center py-6 text-xl text-cyan-300">
-        <p>Cloudy ????</p>
+        <p>{details}</p>
       </div>
 
       <div className="flex flex-row items-center justify-between text-white py-3">
-        <img src="https://openweathermap.org/img/wn/01d@2x.png" className="w-12 my" alt="" />
-        <p className="text-5xl"> 55°</p>
+        <img src={iconURLFromCode(icon)} className="w-12 my" alt="" />
+        <p className="text-5xl"> {`${temp.toFixed()}°`} </p>
         <div className="flex flex-col space-y-2">
           <div className="flex font-light text-sm items-center justify-center">
             <UilTemperature size={18} className="mr-1"/>
             Real Feel:
-            <span className="font-medium ml-1">54°</span>
+            <span className="font-medium ml-1">{`${feels_like.toFixed()}°`}</span>
+
           <div className="flex font-light text-sm items-center justify-center">
             <UilTear size={18} className="mr-1"/>
             Humidity:
-            <span className="font-medium ml-1">50%</span>
+            <span className="font-medium ml-1">{`${humidity.toFixed()}%`}</span>
           </div>
+
           <div className="flex font-light text-sm items-center justify-center">
             <UilWind size={18} className="mr-1"/>
             Wind:
-            <span className="font-medium ml-1">12 mph</span>
+            <span className="font-medium ml-1">{`${speed.toFixed()}mph`}</span>
           </div>
+
           </div>
         </div>
       </div>
@@ -35,22 +43,27 @@ function TempAndDetails() {
     space-x-2 text-white text-sm py-3">
       <UilSun />
       <p className="font-light">
-        Rise: <span className="font-medium ml-1"> 6:08 AM</span>
+        Rise:{" "}<span className="font-medium ml-1">
+          gfdhgd</span>
       </p>
       <p className="font-light">|</p>
       <UilSunset />
       <p className="font-light">
-        Set: <span className="font-medium ml-1"> 9:14 PM</span>
+        Set:{" "}<span className="font-medium ml-1">
+          678gilgu</span>
       </p>
       <p className="font-light">|</p>
       <UilSun />
       <p className="font-light">
-        High: <span className="font-medium ml-1"> 100°</span>
+        High:{" "}<span className="font-medium ml-1">
+          {`${temp_max.toFixed()}°`}</span>
       </p>
       <p className="font-light">|</p>
       <UilSun />
       <p className="font-light">
-        Low: <span className="font-medium ml-1"> 95°</span>
+        Low:{" "}<span className="font-medium ml-1">
+        {`${temp_min.toFixed()}°`}
+        </span>
       </p>
       <p className="font-light">|</p>
     </div>
@@ -60,3 +73,6 @@ function TempAndDetails() {
 }
 
 export default TempAndDetails;
+
+//{formatToLocalTime(sunrise, timezone, "hh:mm a")}
+//{formatToLocalTime(sunset, timezone, "hh:mm a")}
