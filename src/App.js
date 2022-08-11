@@ -1,6 +1,8 @@
 
 import './App.css';
 import Weather from "./components/Weather/Weather";
+import Header from "./components/Header/header";
+import Footer from "./components/Footer/footer";
 //import UilReact from '@iconscout/react-unicons/icons/uil-react';
 //import TopButtons from "./components/TopButtons";
 //import Inputs from "./components/Inputs";
@@ -9,7 +11,15 @@ import Weather from "./components/Weather/Weather";
 
 function App() {
   return (
-    <Weather />
+    <div className="App">
+      <div className="Header">
+        <Header />
+      </div>
+      <Weather />
+      <div className="Footer">
+        <Footer />
+      </div>
+    </div>
   );
 }
 
