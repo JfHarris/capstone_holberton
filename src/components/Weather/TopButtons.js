@@ -1,26 +1,26 @@
-import React from 'react'
+import React from 'react';
 
 function TopButtons({ setQuery }) {
   const cities = [
     {
       id:1,
-      title: "Tulsa"
+      title: "Oklahoma City",
     },
     {
       id:2,
-      title: "Oklahoma City"
+      title: "Chicago",
     },
     {
       id:3,
-      title: "Miami"
+      title: "Seattle",
     },
     {
       id:4,
-      title: "Lawton"
+      title: "Buenos Aires",
     },
     {
       id:5,
-      title: "Idabel"
+      title: "London",
     }
   ]
   return (
