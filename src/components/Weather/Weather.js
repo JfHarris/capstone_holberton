@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Weather() {
 
-  const [query, setQuery] = useState ({ q: "tulsa" });
+  const [query, setQuery] = useState ({ q: "Tulsa" });
   const [units, setUnits] = useState("imperial");
   const [weather, setWeather] = useState(null);
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { UilArrowDown, UilArrowUp,UilTemperature, UilWind, UilTear,
+import { UilTemperature, UilWind, UilTear,
   UilSun, UilSunset, } from "@iconscout/react-unicons";
 import iconURLFromCode from "../../services/weatherService";
 import formatToLocalTime from "../../services/weatherService";
@@ -45,14 +45,15 @@ function TempAndDetails({weather: {
       <p className="font-light">
         Rise:{" "}
         <span className="font-medium ml-1">
-          gfdhgd
+        {`${formatToLocalTime(sunrise, timezone, "hh:mm a")}`}
         </span>
       </p>
       <p className="font-light">|</p>
       <UilSunset />
       <p className="font-light">
         Set:{" "}<span className="font-medium ml-1">
-          678gilgu</span>
+        {`${formatToLocalTime(sunset, timezone, "hh:mm a")}`}
+        </span>
       </p>
       <p className="font-light">|</p>
       <UilSun />
@@ -70,11 +71,10 @@ function TempAndDetails({weather: {
       <p className="font-light">|</p>
     </div>
   </div>
-
   )
 }
 
 export default TempAndDetails;
 
-//{formatToLocalTime(sunrise, timezone, "hh:mm a")}
-//{formatToLocalTime(sunset, timezone, "hh:mm a")}
+//
+//

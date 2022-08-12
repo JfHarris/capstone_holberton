@@ -1,4 +1,3 @@
-
 import './App.css';
 import Weather from "./components/Weather/Weather";
 import Header from "./components/Header/header";
