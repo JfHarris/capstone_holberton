@@ -8,7 +8,6 @@ import Snake from "./components/snake_game/snake";
 //import Inputs from "./components/Inputs";
 //import TimeAndLocation from "./components/TimeAndLocation";
 
-
 function App() {
   return (
     <div className="App">
@@ -25,9 +24,9 @@ function App() {
             </div>
         </div>
       </div>
-      <div className="Snake">
-        <Snake />
-      </div>
+        <div className="Snake">
+          <Snake />
+        </div>
       </div>
     <div className="Footer">
       <Footer />
